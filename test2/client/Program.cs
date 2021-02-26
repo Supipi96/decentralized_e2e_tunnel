@@ -244,7 +244,7 @@ namespace client
         static byte[] Encrypt(byte[] input, RSAParameters publicKey)
         {
             byte[] encrypted;
-            using (var rsa = new RSACryptoServiceProvider(20480))
+            using (var rsa = new RSACryptoServiceProvider(204800))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(publicKey);
@@ -269,7 +269,7 @@ namespace client
         {
             Console.WriteLine(input.Length);
             byte[] decrypted;
-            using (var rsa = new RSACryptoServiceProvider(20480))
+            using (var rsa = new RSACryptoServiceProvider(204800))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(privateKey);
