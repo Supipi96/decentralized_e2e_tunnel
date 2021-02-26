@@ -70,7 +70,7 @@ namespace server
 
 
 
-            bytes = new byte[2048000];
+            bytes = new byte[20480000];
             stream.Read(bytes, 0, bytes.Length);
             string P_str = System.Text.Encoding.ASCII.GetString(bytes, 0, bytes.Length);
 
@@ -153,7 +153,11 @@ namespace server
                 ring = exclusiveOR(ring, y[i]);
             }
 
-            byte[] v = ring;
+
+		
+		
+		
+		byte[] v = ring;
             return v;
         }
 
@@ -217,7 +221,7 @@ namespace server
         static byte[] Encrypt(byte[] input, RSAParameters publicKey)
         {
             byte[] encrypted;
-            using (var rsa = new RSACryptoServiceProvider(204800))
+            using (var rsa = new RSACryptoServiceProvider(2048000))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(publicKey);
@@ -242,7 +246,7 @@ namespace server
         {
             Console.WriteLine(input.Length);
             byte[] decrypted;
-            using (var rsa = new RSACryptoServiceProvider(204800))
+            using (var rsa = new RSACryptoServiceProvider(2048000))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(privateKey);
