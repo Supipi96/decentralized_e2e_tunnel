@@ -70,7 +70,7 @@ namespace server
 
 
 
-            bytes = new byte[20480];
+            bytes = new byte[204800];
             stream.Read(bytes, 0, bytes.Length);
             string P_str = System.Text.Encoding.ASCII.GetString(bytes, 0, bytes.Length);
 
@@ -217,7 +217,7 @@ namespace server
         static byte[] Encrypt(byte[] input, RSAParameters publicKey)
         {
             byte[] encrypted;
-            using (var rsa = new RSACryptoServiceProvider(2048))
+            using (var rsa = new RSACryptoServiceProvider(20480))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(publicKey);
@@ -242,7 +242,7 @@ namespace server
         {
             Console.WriteLine(input.Length);
             byte[] decrypted;
-            using (var rsa = new RSACryptoServiceProvider(2048))
+            using (var rsa = new RSACryptoServiceProvider(20480))
             {
                 rsa.PersistKeyInCsp = false;
                 rsa.ImportParameters(privateKey);
